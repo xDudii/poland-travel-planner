@@ -30,7 +30,7 @@ function SearchPanel() {
       <h2 className="search-panel__title">Zaplanuj podróż</h2>
       <form className="search-panel__form" onSubmit={handleSubmit}>
         <div className="search-panel__input-group">
-          <label htmlFor="startLocation">Skąd?:</label>
+          <label htmlFor="startLocation">Skąd?</label>
           <input
             type="text"
             id="startLocation"
@@ -41,7 +41,7 @@ function SearchPanel() {
           />
         </div>
         <div className="search-panel__input-group">
-          <label htmlFor="endLocation">Dokąd?:</label>
+          <label htmlFor="endLocation">Dokąd?</label>
           <input
             type="text"
             id="endLocation"
@@ -69,6 +69,7 @@ function SearchPanel() {
             name="returnDate"
             value={formData.returnDate}
             onChange={handleInputChange}
+            min={formData.travelDate}
           />
         </div>
         <div className="search-panel__input-group">
@@ -78,6 +79,7 @@ function SearchPanel() {
             name="transport"
             value={formData.transport}
             onChange={handleInputChange}
+            required
           >
             <option value="">Wybierz</option>
             <option value="all">Wszystkie</option>
