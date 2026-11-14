@@ -1,0 +1,19 @@
+.map-view {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.map-view .leaflet-container {
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+    .map-view {
+        min-width: 100%;
+        min-height: 50vh;
+    }
+    }

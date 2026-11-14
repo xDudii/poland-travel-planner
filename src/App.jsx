@@ -1,6 +1,7 @@
 import Header from './components/Header';
 import SearchPanel from './components/SearchPanel';
 import MapPlaceholder from './components/MapPlaceholder';
+import MapView from './components/MapView';
 import './App.css';
 
 function App() {
@@ -11,7 +12,7 @@ function App() {
       <main className="main-content">
   
         <SearchPanel />
-        <MapPlaceholder />
+        <MapView />
       </main>
 
     
