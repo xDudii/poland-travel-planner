@@ -7,6 +7,7 @@ function SearchPanel() {
     startLocation: '',
     endLocation: '',
     travelDate: '',
+    returnDate: '',
     transport: '',
   });
 
@@ -29,7 +30,7 @@ function SearchPanel() {
       <h2 className="search-panel__title">Zaplanuj podróż</h2>
       <form className="search-panel__form" onSubmit={handleSubmit}>
         <div className="search-panel__input-group">
-          <label htmlFor="startLocation">Początek:</label>
+          <label htmlFor="startLocation">Skąd?:</label>
           <input
             type="text"
             id="startLocation"
@@ -40,7 +41,7 @@ function SearchPanel() {
           />
         </div>
         <div className="search-panel__input-group">
-          <label htmlFor="endLocation">Koniec:</label>
+          <label htmlFor="endLocation">Dokąd?:</label>
           <input
             type="text"
             id="endLocation"
@@ -51,12 +52,22 @@ function SearchPanel() {
           />
         </div>
         <div className="search-panel__input-group">
-          <label htmlFor="travelDate">Data podróży:</label>
+          <label htmlFor="travelDate">Data wyjazdu:</label>
           <input
             type="date"
             id="travelDate"
             name="travelDate"
             value={formData.travelDate}
+            onChange={handleInputChange}
+          />
+        </div>
+        <div className="search-panel__input-group">
+          <label htmlFor="returnDate">Data powrotu:</label>
+          <input
+            type="date"
+            id="returnDate"
+            name="returnDate"
+            value={formData.returnDate}
             onChange={handleInputChange}
           />
         </div>
@@ -69,6 +80,7 @@ function SearchPanel() {
             onChange={handleInputChange}
           >
             <option value="">Wybierz</option>
+            <option value="all">Wszystkie</option>
             <option value="car">Samochód</option>
             <option value="train">Pociąg</option>
             <option value="bus">Autobus</option>
