@@ -14,7 +14,7 @@ function Header() {
       <button
         type="button"
         className="header-burger"
-        aria-label="Otwórz menu"
+        aria-label={isMenuOpen ? "Zamknij menu" : "Otwórz menu"}
         aria-expanded={isMenuOpen}
         onClick={() => setIsMenuOpen((prev) => !prev)}>
 
