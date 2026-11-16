@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchPanel.css';
 
-function SearchPanel({ onSearch }) {
+function SearchPanel() {
 
   const [formData, setFormData] = useState({
     startLocation: '',
@@ -21,7 +21,7 @@ function SearchPanel({ onSearch }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSearch(formData);
+    console.log('Wyszukiwanie tras z danymi:', formData);
   }
 
 

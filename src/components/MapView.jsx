@@ -1,6 +1,6 @@
 import './MapView.css';
 import { useState } from 'react';
-import { MapContainer, TileLayer, CircleMarker, Popup, useMapEvents } from 'react-leaflet';
+import { MapContainer, TileLayer, CircleMarker, Popup, useMapEvents, Marker } from 'react-leaflet';
 
 function UserMarker() {
   const [position, setPosition] = useState(null);
@@ -14,19 +14,30 @@ function UserMarker() {
   if (!position) return null;
 
   return (
-    <CircleMarker center={position} radius={8} color="red">
+    <Marker
+      position={position}
+      draggable={true}
+      eventHandlers={{
+        dragend: (event) => {
+          const newPos = event.target.getLatLng();
+          setPosition(newPos);
+        },
+      }}
+    >
       <Popup>
         <div>
-          <h3>Współrzędne</h3>
+          <h3>Wspolrzedne</h3>
           <p>{position.lat.toFixed(5)}</p>
           <p>{position.lng.toFixed(5)}</p>
         </div>
       </Popup>
-    </CircleMarker>
+    </Marker>
   );
 }
 
-function MapView({ markers = [] }) {
+
+
+function MapView() {
   return (
     <div className="map-view">
       <MapContainer center={[52.0, 19.0]} zoom={6} scrollWheelZoom>
@@ -34,24 +45,24 @@ function MapView({ markers = [] }) {
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+        <CircleMarker center={[50.0412, 21.9991]} radius={7} color="green">
+          <Popup>
+            <div>
+              <h3>Rzeszów</h3>
+              <p>Przykładowy punkt początkowy</p>
+            </div>
+          </Popup>
+        </CircleMarker>
 
-        {markers.map((marker) => (
-          <CircleMarker
-            key={marker.id}
-            center={marker.position}
-            radius={7}
-            color={marker.color}
-          >
-            <Popup>
-              <div>
-                <h3>{marker.label}</h3>
-                <p>{marker.position[0].toFixed(4)}, {marker.position[1].toFixed(4)}</p>
-              </div>
-            </Popup>
-          </CircleMarker>
-        ))}
-
-        <UserMarker />
+        <CircleMarker center={[50.0647, 19.9450]} radius={7} color="blue">
+          <Popup>
+            <div>
+              <h3>Kraków</h3>
+              <p>Przykładowy punkt końcowy</p>
+            </div>
+          </Popup>
+        </CircleMarker>
+        <UserMarker></UserMarker>
       </MapContainer>
     </div>
   );
